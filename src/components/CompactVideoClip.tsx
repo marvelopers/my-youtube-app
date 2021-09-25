@@ -1,13 +1,18 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { BLACK, GREY_3 } from 'src/styles/colors';
+import { Snippet } from 'src/model/youtube';
 
-const CompactVideoClip = () => (
+interface CompactVideoClipProps {
+  snippet: Snippet;
+}
+
+const CompactVideoClip = ({ snippet }: CompactVideoClipProps) => (
   <Wrapper>
-    <Img />
+    <Img src={snippet.thumbnails.medium.url} alt="video thumbnail" />
     <Info>
-      <h3>오춘기에 사업한다고 무작정 회사부터 때려친 서울대생이 한 일은? | 부자탐구생활 11편 원티드</h3>
-      <span>셀링테크트리민군MinGoon</span>
+      <h3>{snippet.title}</h3>
+      <span>{snippet.channelTitle}</span>
     </Info>
   </Wrapper>
 );
@@ -22,9 +27,8 @@ const Wrapper = styled.li`
   height: 90px;
 `;
 
-const Img = styled.div`
-  height: 88px;
-  width: 50%;
+const Img = styled.img`
+  height: 91px;
   border: 1px solid purple;
 `;
 
