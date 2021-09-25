@@ -1,21 +1,29 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { BLACK, GREY_3 } from 'src/styles/colors';
-import { Snippet } from 'src/model/youtube';
+import { Video } from 'src/model/youtube';
+// import { useDispatch } from 'react-redux';
+// import { youtubeActions } from 'src/features/youtube/youtubeSlice';
 
 interface CompactVideoClipProps {
-  snippet: Snippet;
+  video: Video;
+  onClickVideo: (video: Video) => void;
 }
 
-const CompactVideoClip = ({ snippet }: CompactVideoClipProps) => (
-  <Wrapper>
-    <Img src={snippet.thumbnails.medium.url} alt="video thumbnail" />
-    <Info>
-      <h3>{snippet.title}</h3>
-      <span>{snippet.channelTitle}</span>
-    </Info>
-  </Wrapper>
-);
+const CompactVideoClip = ({ video, onClickVideo }: CompactVideoClipProps) => {
+  const { snippet } = video;
+  // const dispatch = useDispatch();
+
+  return (
+    <Wrapper onClick={() => onClickVideo(video)}>
+      <Img src={snippet.thumbnails.medium.url} alt="video thumbnail" />
+      <Info>
+        <h3>{snippet.title}</h3>
+        <span>{snippet.channelTitle}</span>
+      </Info>
+    </Wrapper>
+  );
+};
 
 export default CompactVideoClip;
 
