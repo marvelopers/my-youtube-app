@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import styled from '@emotion/styled';
 import { GREY_2, GREY_4 } from 'src/styles/colors';
+import { KeyPressAction } from 'src/constants/search';
+import { useDispatch } from 'react-redux';
+import { getVideoList, youtubeActions } from 'src/features/youtube/youtubeSlice';
 import SearchIcon from './icons/SearchIcon';
 
 interface SearchBarProps {
@@ -8,12 +11,34 @@ interface SearchBarProps {
 }
 
 const SearchBar = ({ placeholder = '검색어를 입력하세요' }: SearchBarProps) => {
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement>(null);
+  const dispatch = useDispatch();
+
+  const handleSearch = useCallback(() => {
+    const searchTerm = inputRef.current ? inputRef.current.value : '';
+    dispatch(youtubeActions.search(searchTerm));
+    dispatch(getVideoList(searchTerm));
+  }, [dispatch]);
+
+  const handleClick = useCallback(() => {
+    handleSearch();
+  }, [handleSearch]);
+
+  const handlePressKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement> & React.ChangeEvent<HTMLInputElement>) => {
+      if (e.key !== KeyPressAction.ENTER) {
+        return;
+      }
+      e.stopPropagation();
+      handleSearch();
+    },
+    [handleSearch],
+  );
 
   return (
     <Wrapper>
-      <input type="text" placeholder={placeholder} />
-      <SearchIconButton>
+      <input type="text" ref={inputRef} placeholder={placeholder} onKeyPress={handlePressKeyDown} />
+      <SearchIconButton onClick={handleClick}>
         <SearchIcon />
       </SearchIconButton>
     </Wrapper>
@@ -28,7 +53,7 @@ const Wrapper = styled.div`
   border: 1px solid red;
   box-sizing: border-box;
   position: relative;
-  max-width: 68vw;
+  max-width: 68%;
   height: 37px;
   border: 0.8px solid ${GREY_2};
   border-radius: 8px;
@@ -40,6 +65,7 @@ const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     border: none;
+    outline: none;
   }
   input::placeholder {
     color: ${GREY_4};

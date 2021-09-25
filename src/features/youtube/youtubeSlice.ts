@@ -10,7 +10,10 @@ export const API_KEY = 'AIzaSyCd_YTkVELRrudaoBKrVs2ycrkUZKq4CLc';
 export interface YoutubeState {
   isLoading: boolean;
   params: Params;
-  videoList: Video[];
+  videoList: {
+    alreadyPlayedVideoIds: string[];
+    playList: Video[];
+  };
   error: Error | null;
 }
 
@@ -26,7 +29,10 @@ const initParams: Params = {
 const initialState: YoutubeState = {
   isLoading: false,
   params: initParams,
-  videoList: [],
+  videoList: {
+    alreadyPlayedVideoIds: [],
+    playList: [],
+  },
   error: null,
 };
 
@@ -56,18 +62,24 @@ const YoutubeSlice = createSlice({
       },
       prepare: (searchTerm: string) => ({ payload: searchTerm }),
     },
+    playedVideo: {
+      reducer: (state, action: PayloadAction<string>) => {
+        state.videoList.alreadyPlayedVideoIds = [...state.videoList.alreadyPlayedVideoIds, action.payload];
+      },
+      prepare: (videoId: string) => ({ payload: videoId }),
+    },
   },
   extraReducers: {
     [getVideoList.pending.type]: (state) => {
       state.isLoading = true;
     },
     [getVideoList.fulfilled.type]: (state, action: PayloadAction<Video[]>) => {
-      state.videoList = action.payload;
+      state.videoList.playList = action.payload;
       state.isLoading = false;
     },
     [getVideoList.rejected.type]: (state) => {
       state.isLoading = false;
-      state.videoList = [];
+      state.videoList.playList = [];
     },
   },
 });
