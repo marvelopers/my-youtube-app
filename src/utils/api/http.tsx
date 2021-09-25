@@ -1,0 +1,15 @@
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+
+export const { CancelToken } = axios;
+
+export const BASE_URL = process.env.REACT_APP_YOUTUBE_BASE_URL;
+export const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
+
+export const instance = axios.create({
+  headers: { 'content-type': 'application/json' },
+});
+
+export const HTTP = {
+  get: <ResponseType,>(url: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ResponseType>> =>
+    instance.get(url, options),
+};
