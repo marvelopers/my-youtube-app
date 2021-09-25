@@ -5,16 +5,20 @@ import { GREY_1, GREY_5 } from 'src/styles/colors';
 import { IPHONE_MAX } from 'src/styles/layout';
 import { Button } from './Button';
 
-const ShuffleButton = () => (
-  <ButtonWrapper>
+interface ShuffleButtonProps {
+  onClick: () => void;
+}
+
+const ShuffleButton = ({ onClick }: ShuffleButtonProps) => (
+  <ButtonWrap onClick={onClick}>
     <ShuffleIcon />
     <span>검색결과 셔플 재생</span>
-  </ButtonWrapper>
+  </ButtonWrap>
 );
 
 export default ShuffleButton;
 
-const ButtonWrapper = styled(Button)`
+const ButtonWrap = styled(Button)`
   padding: 10px 14px;
   font-size: 1rem;
   line-height: 1.2rem;

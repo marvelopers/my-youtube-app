@@ -8,10 +8,13 @@ import { Button } from './Button';
 interface FilterButtonProps {
   text: string;
   selected?: boolean;
+  onClick: () => void;
 }
 
-const FilterButton = ({ text, selected = false }: FilterButtonProps) => (
-  <ButtonWrapper selected={selected}>{text}</ButtonWrapper>
+const FilterButton = ({ text, selected = false, onClick }: FilterButtonProps) => (
+  <ButtonWrapper selected={selected} onClick={onClick}>
+    {text}
+  </ButtonWrapper>
 );
 
 export default FilterButton;
