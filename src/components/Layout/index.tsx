@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import React, { ReactNode } from 'react';
-import SearchBar from '../SearchBar';
+import SearchBar from '../home/SearchBar';
 
 interface LayoutProps {
   children: ReactNode;

@@ -21,7 +21,7 @@ export default FilterButton;
 
 const ButtonWrapper = styled(Button)(
   ({ selected }: { selected: boolean }) => css`
-    padding: 10px 15px;
+    padding: 10px 13px;
     font-size: 1rem;
     line-height: 1.2rem;
     font-weight: 500;

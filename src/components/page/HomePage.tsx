@@ -9,8 +9,8 @@ import { DEFAULT_LIMIT } from 'src/constants/search';
 import { youtubeActions } from 'src/features/youtube/youtubeSlice';
 import { Video } from 'src/model/youtube';
 import { selectParams, selectVideoList } from 'src/selectors/youtube';
-import Player from '../Player';
-import Playlist from '../Playlist';
+import Player from '../home/Player';
+import Playlist from '../home/Playlist';
 
 const HomePage = () => {
   const [watch, setWatch] = useState<Video>();
