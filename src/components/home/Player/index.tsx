@@ -8,26 +8,25 @@ const YOUTUBE_EMBEB_URL = 'https://www.youtube.com/embed';
 
 interface PlayerProps {
   video: Video;
+  onClickHeart?: () => void;
 }
 
-const Player = ({ video }: PlayerProps) => {
+const Player = ({ video, onClickHeart }: PlayerProps) => {
   console.log('**sss');
+  // const hasLike = true;
   return (
     <Styles.Wrapper>
-      <div>iframe</div>
-      <iframe
-        width="100%"
-        height="374px"
-        src={`${YOUTUBE_EMBEB_URL}/${video.id.videoId}`}
-        frameBorder="0"
-        allowFullScreen
-      />
-      <div>
-        <h2>{video.snippet.title}</h2>
-        <span>{video.snippet.channelTitle}</span>
-        <HeartIcon />
-        <p>{video.snippet.description}</p>
-      </div>
+      <Styles.Frame src={`${YOUTUBE_EMBEB_URL}/${video.id.videoId}`} frameBorder="0" allowFullScreen />
+      <Styles.Info>
+        <Styles.Title>{video.snippet.title}</Styles.Title>
+        <Styles.Sub>
+          <Styles.ChannelInfo>{video.snippet.channelTitle}</Styles.ChannelInfo>
+          <Styles.ButtonWrapper onClick={onClickHeart}>
+            <HeartIcon selected />
+          </Styles.ButtonWrapper>
+        </Styles.Sub>
+        <Styles.Desc>{video.snippet.description}</Styles.Desc>
+      </Styles.Info>
     </Styles.Wrapper>
   );
 };
