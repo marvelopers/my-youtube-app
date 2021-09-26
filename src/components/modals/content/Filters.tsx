@@ -1,15 +1,22 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
+import { useGetFilter } from 'src/hook/useGetFilter';
 import { FilterList, FilterType } from 'src/constants/filter';
 import { IPHONE_MAX } from 'src/styles/layout';
-import FilterButton from '../../common/button/FilterButton';
+import FilterButton from 'src/components/common/button/FilterButton';
 
 const Filters = () => {
-  const handleClickFilter = useCallback(() => {}, []);
+  const { order, handleClickFilter } = useGetFilter();
+
   return (
     <List>
       {Object.keys(FilterList).map((key) => (
-        <FilterButton key={key} text={FilterList[key as FilterType]} onClick={handleClickFilter} />
+        <FilterButton
+          key={key}
+          text={FilterList[key as FilterType]}
+          selected={order === key}
+          onClick={() => handleClickFilter(key as FilterType)}
+        />
       ))}
     </List>
   );
