@@ -1,8 +1,9 @@
 import React, { useCallback, useRef } from 'react';
 import styled from '@emotion/styled';
+import { useDispatch } from 'react-redux';
 import { GREY_2, GREY_4 } from 'src/styles/colors';
 import { KeyPressAction } from 'src/constants/search';
-import { useDispatch } from 'react-redux';
+import { HEADER_SEARCH_BAR_HEIGHT, IPHONE_MAX } from 'src/styles/layout';
 import { getVideoList, youtubeActions } from 'src/features/youtube/youtubeSlice';
 import SearchIcon from '../icons/SearchIcon';
 
@@ -54,21 +55,27 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   position: relative;
   max-width: 68%;
-  height: 37px;
+  height: ${HEADER_SEARCH_BAR_HEIGHT}px;
   border: 0.8px solid ${GREY_2};
   border-radius: 8px;
   box-sizing: border-box;
-
-  padding: 10px 47px 10px 20px;
+  padding: 9px 47px 9px 20px;
 
   input {
     width: 100%;
     height: 100%;
     border: none;
     outline: none;
+    font-size: 16px;
+    line-height: 19px;
   }
   input::placeholder {
     color: ${GREY_4};
+  }
+
+  @media (max-width: ${IPHONE_MAX}px) {
+    max-width: 100%;
+    margin: 15px 20px 13px 20px;
   }
 `;
 
@@ -76,6 +83,6 @@ const SearchIconButton = styled.button`
   position: absolute;
   top: 0;
   bottom: 0;
-  height: 37px;
+  height: ${HEADER_SEARCH_BAR_HEIGHT}px;
   right: 12px;
 `;
