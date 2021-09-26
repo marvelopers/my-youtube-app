@@ -17,6 +17,7 @@ const Playlist = ({ playList, onClickVideo }: PlaylistProps) => {
 
   const handleClickShuffle = useCallback(() => {
     console.log('handleClickShuffle');
+    // 셔플 클릭 시 리스트 정렬!!!
   }, []);
 
   return (
@@ -29,7 +30,7 @@ const Playlist = ({ playList, onClickVideo }: PlaylistProps) => {
       </Styles.ButtonWrapper>
       <Styles.List>
         {playList.map((item) => (
-          <CompactVideoClip video={item} onClickVideo={onClickVideo} />
+          <CompactVideoClip key={item.id.videoId} video={item} onClickVideo={onClickVideo} />
         ))}
       </Styles.List>
     </Styles.Wrapper>

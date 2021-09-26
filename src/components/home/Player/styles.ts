@@ -3,7 +3,7 @@ import { Button } from 'src/components/common/button/Button';
 import { BLACK, GREY_1, GREY_3 } from 'src/styles/colors';
 import { IPHONE_MAX } from 'src/styles/layout';
 
-export const Frame = styled.iframe`
+export const Frame = styled.div`
   width: 100%;
   height: 374px;
   @media (max-width: ${IPHONE_MAX}px) {
