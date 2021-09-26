@@ -11,6 +11,7 @@ export interface YoutubeState {
   isLoading: boolean;
   params: Params;
   videoList: {
+    myLikeVideoIds: string[];
     alreadyPlayedVideoIds: string[];
     playList: Video[];
   };
@@ -20,7 +21,7 @@ export interface YoutubeState {
 const initParams: Params = {
   key: API_KEY,
   part: 'snippet',
-  q: '원티드랩',
+  q: '',
   type: 'video',
   maxResults: DEFAULT_LIMIT,
   order: FilterType.Date,
@@ -30,6 +31,7 @@ const initialState: YoutubeState = {
   isLoading: false,
   params: initParams,
   videoList: {
+    myLikeVideoIds: [],
     alreadyPlayedVideoIds: [],
     playList: [],
   },
@@ -39,12 +41,14 @@ const initialState: YoutubeState = {
 export const getVideoList = createAsyncThunk('hospital/getAvailableHours', async (param: string, { getState }: any) => {
   const state = getState();
   const stateParams = selectParams(state);
-  const params: Params = { ...stateParams, q: param };
+  const params: Params = param ? { ...stateParams, q: param } : stateParams;
   try {
     const response = await youtubeApi.getSearchResults(params);
     return response;
-  } catch (error) {
-    if (error) {
+  } catch (error: any) {
+    if (error.code === 403) {
+      console.log('하루 할당 횟수를 초과했습니다');
+      // TODO: error 모달
       // console.log('ERROR STATUS : ', error.response.status);
       console.log('Video list data could not be received');
     }
@@ -64,9 +68,29 @@ const YoutubeSlice = createSlice({
     },
     playedVideo: {
       reducer: (state, action: PayloadAction<string>) => {
-        state.videoList.alreadyPlayedVideoIds = [...state.videoList.alreadyPlayedVideoIds, action.payload];
+        state.videoList.alreadyPlayedVideoIds = Array.from(
+          new Set([...state.videoList.alreadyPlayedVideoIds, action.payload]),
+        );
       },
       prepare: (videoId: string) => ({ payload: videoId }),
+    },
+    selectedFilter: {
+      reducer: (state, action: PayloadAction<FilterType>) => {
+        state.params.order = action.payload;
+      },
+      prepare: (filter: FilterType) => ({ payload: filter }),
+    },
+    setMyLikeVideoIds: {
+      reducer: (state, action: PayloadAction<string>) => {
+        state.videoList.myLikeVideoIds.push(action.payload);
+      },
+      prepare: (VideoId: string) => ({ payload: VideoId }),
+    },
+    removeMyLikeVideoIds: {
+      reducer: (state, action: PayloadAction<string>) => {
+        state.videoList.myLikeVideoIds = state.videoList.myLikeVideoIds.filter((prev) => prev !== action.payload);
+      },
+      prepare: (VideoId: string) => ({ payload: VideoId }),
     },
   },
   extraReducers: {
