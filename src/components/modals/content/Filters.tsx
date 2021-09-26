@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import styled from '@emotion/styled';
 import { FilterList, FilterType } from 'src/constants/filter';
 import { IPHONE_MAX } from 'src/styles/layout';
-import FilterButton from '../../common/FilterButton';
+import FilterButton from '../../common/button/FilterButton';
 
 const Filters = () => {
   const handleClickFilter = useCallback(() => {}, []);

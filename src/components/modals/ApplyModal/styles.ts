@@ -3,7 +3,7 @@ import { css, keyframes } from '@emotion/react';
 import { ModalDuration } from 'src/constants/modal';
 import { WHITE, WANTED_BLUE } from 'src/styles/colors';
 import { ZIndex } from 'src/styles/zIndex';
-import { Button } from 'src/components/common/Button';
+import { Button } from 'src/components/common/button/Button';
 import { IPHONE_MAX } from 'src/styles/layout';
 
 interface ModalContainerParams {
