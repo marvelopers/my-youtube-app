@@ -19,6 +19,7 @@ const ShuffleButton = ({ onClick }: ShuffleButtonProps) => (
 export default ShuffleButton;
 
 const ButtonWrap = styled(Button)`
+  justify-content: flex-start;
   padding: 10px 14px;
   font-size: 1rem;
   line-height: 1.2rem;

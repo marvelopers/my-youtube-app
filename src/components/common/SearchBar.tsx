@@ -54,12 +54,13 @@ const Wrapper = styled.div`
   border: 1px solid red;
   box-sizing: border-box;
   position: relative;
-  max-width: 68%;
+  flex: 1 1 62%;
   height: ${HEADER_SEARCH_BAR_HEIGHT}px;
   border: 0.8px solid ${GREY_2};
   border-radius: 8px;
   box-sizing: border-box;
   padding: 9px 47px 9px 20px;
+  margin: 15px 20px 13px 20px;
 
   input {
     width: 100%;
