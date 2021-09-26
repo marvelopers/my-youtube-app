@@ -9,10 +9,22 @@ export const Wrapper = styled.li`
   margin-top: 11px;
 `;
 
+export const ImgWrapper = styled.div`
+  position: relative;
+`;
+
 export const Img = styled.img`
   flex: 1 1 50%;
   max-height: 91px;
   margin-right: 10px;
+`;
+
+export const IconWrapper = styled.div`
+  width: 18px;
+  height: 15px;
+  position: absolute;
+  top: 5px;
+  right: 14px;
 `;
 
 export const Info = styled.div`

@@ -48,7 +48,10 @@ export const ChannelInfo = styled.span`
   color: ${GREY_3};
 `;
 
-export const ButtonWrapper = styled(Button)``;
+export const ButtonWrapper = styled(Button)`
+  width: 30px;
+  height: 24px;
+`;
 
 export const Desc = styled.p`
   padding-top: 11px;
