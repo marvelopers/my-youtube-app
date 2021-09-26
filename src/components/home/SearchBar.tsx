@@ -4,7 +4,7 @@ import { GREY_2, GREY_4 } from 'src/styles/colors';
 import { KeyPressAction } from 'src/constants/search';
 import { useDispatch } from 'react-redux';
 import { getVideoList, youtubeActions } from 'src/features/youtube/youtubeSlice';
-import SearchIcon from './icons/SearchIcon';
+import SearchIcon from '../icons/SearchIcon';
 
 interface SearchBarProps {
   placeholder?: string;
