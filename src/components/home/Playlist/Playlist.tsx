@@ -9,7 +9,7 @@ import * as Styles from './styles';
 
 interface PlaylistProps {
   playList: Video[];
-  onClickVideo: (video: Video, index: number) => void;
+  onClickVideo: (index: number) => void;
 }
 
 const Playlist = ({ playList, onClickVideo }: PlaylistProps) => {
@@ -26,7 +26,7 @@ const Playlist = ({ playList, onClickVideo }: PlaylistProps) => {
       </Styles.ButtonWrapper>
       <Styles.List>
         {playList.map((item, index) => (
-          <CompactVideoClip key={item.id.videoId} video={item} onClickVideo={() => onClickVideo(item, index)} />
+          <CompactVideoClip key={item.id.videoId} video={item} onClickVideo={() => onClickVideo(index)} />
         ))}
       </Styles.List>
       {!onShuffle && <button type="button">검색결과 더보기</button>}
