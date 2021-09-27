@@ -1,13 +1,13 @@
 import React from 'react';
 import { ModalController } from './components/modals/ModalController';
-import HomePage from './components/page/HomePage';
+import { AppRouter } from './routes';
 import GlobalStyles from './styles/GlobalStyle';
 
 const App = () => (
   <>
     <GlobalStyles />
     <ModalController />
-    <HomePage />
+    <AppRouter />
   </>
 );
 
