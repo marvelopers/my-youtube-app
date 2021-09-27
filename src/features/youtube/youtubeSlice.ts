@@ -1,8 +1,10 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FilterType } from 'src/constants/filter';
+import { ModalType } from 'src/constants/modal';
 import { Params, Video } from 'src/model/youtube';
 import { selectParams } from 'src/selectors/youtube';
 import { youtubeApi } from 'src/utils/api/youtubeApi';
+import { ModalHandler } from 'src/utils/ModalHandler';
 import { DEFAULT_LIMIT } from '../../constants/search';
 
 export const API_KEY = 'AIzaSyCd_YTkVELRrudaoBKrVs2ycrkUZKq4CLc';
@@ -46,10 +48,15 @@ export const getVideoList = createAsyncThunk('hospital/getAvailableHours', async
     const response = await youtubeApi.getSearchResults(params);
     return response;
   } catch (error: any) {
-    if (error.code === 403) {
-      console.log('하루 할당 횟수를 초과했습니다');
-      // TODO: error 모달
-      // console.log('ERROR STATUS : ', error.response.status);
+    if (error) {
+      const errorMessage =
+        error.response.status === 403
+          ? '하루동안 검색가능한 횟수를 초과했습니다.'
+          : '문제가 발생했습니다. 다시 시도해주세요.';
+      ModalHandler.show(ModalType.Toast, {
+        ToastMessage: errorMessage,
+      });
+      console.log('ERROR STATUS : ', error.response.status);
       console.log('Video list data could not be received');
     }
     return error;
