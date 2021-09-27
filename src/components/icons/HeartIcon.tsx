@@ -1,5 +1,5 @@
 import React from 'react';
-import { GREY_1, WANTED_RED } from '../../styles/colors';
+import { GREY_1, WANTED_RED } from 'src/styles/colors';
 
 interface HeartIconProps {
   selected?: boolean;

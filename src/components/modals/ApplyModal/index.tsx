@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
-import CloseIcon from 'src/components/icons/CloseIcon';
-import { ModalWrapper } from 'src/components/modals/ModalWrapper';
-import { ApplyModalParams, ModalType, ModalDuration } from 'src/constants/modal';
 import { ModalHandler } from 'src/utils/ModalHandler';
+import { ApplyModalParams, ModalType, ModalDuration } from 'src/constants/modal';
+import { ModalWrapper } from 'src/components/modals/ModalWrapper';
+import CloseIcon from 'src/components/icons/CloseIcon';
 import * as Styles from './styles';
 
 interface FilterModalProps {

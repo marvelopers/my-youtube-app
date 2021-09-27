@@ -1,13 +1,14 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FilterType } from 'src/constants/filter';
-import { ModalType } from 'src/constants/modal';
-import { Params, Video } from 'src/model/youtube';
-import { selectParams } from 'src/selectors/youtube';
 import { youtubeApi } from 'src/utils/api/youtubeApi';
+import { selectParams } from 'src/selectors/youtube';
 import { ModalHandler } from 'src/utils/ModalHandler';
+import { ModalType } from 'src/constants/modal';
+import { FilterType } from 'src/constants/filter';
+import { Params, Video } from 'src/model/youtube';
 import { DEFAULT_LIMIT } from '../../constants/search';
 
-export const API_KEY = 'AIzaSyCd_YTkVELRrudaoBKrVs2ycrkUZKq4CLc';
+// export const API_KEY = 'AIzaSyCd_YTkVELRrudaoBKrVs2ycrkUZKq4CLc';
+export const API_KEY = 'AIzaSyC0YOLCMHDjiIS_id4xY-uKXWvbbNJMRxo';
 
 export interface YoutubeState {
   isLoading: boolean;

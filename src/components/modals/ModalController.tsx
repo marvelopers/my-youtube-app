@@ -2,8 +2,8 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { ModalType, ModalParams } from 'src/constants/modal';
 import { TOAST_BACKGROUND_RGB } from 'src/styles/colors';
 import { ModalEventHandler, ModalHandler } from 'src/utils/ModalHandler';
-import ApplyModal from './ApplyModal';
-import Toast from './Toast';
+import ApplyModal from 'src/components/modals/ApplyModal';
+import Toast from 'src/components/modals/Toast';
 
 export const ModalController = () => {
   const [openedModals, setOpenedModals] = useState<ModalType[]>([]);

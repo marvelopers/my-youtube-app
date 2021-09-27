@@ -1,10 +1,10 @@
 import React from 'react';
-import { Video } from 'src/model/youtube';
-import ShuffleButton from 'src/components/common/button/ShuffleButton';
-import CompactVideoClip from 'src/components/home/CompactVideoClip';
-import FilterIcon from 'src/components/icons/FilterIcon';
 import { useGetFilter } from 'src/hook/useGetFilter';
 import { useGetShuffle } from 'src/hook/useGetShuffle';
+import FilterIcon from 'src/components/icons/FilterIcon';
+import { Video } from 'src/model/youtube';
+import CompactVideoClip from 'src/components/home/CompactVideoClip';
+import ShuffleButton from 'src/components/common/button/ShuffleButton';
 import * as Styles from './styles';
 
 interface PlaylistProps {

@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { youtubeActions } from 'src/features/youtube/youtubeSlice';
 import { selectVideoList } from 'src/selectors/youtube';
+import { youtubeActions } from 'src/features/youtube/youtubeSlice';
 
 export const useGetLikeVideo = (videoId: string) => {
   const dispatch = useDispatch();

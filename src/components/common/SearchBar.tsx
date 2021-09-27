@@ -1,11 +1,11 @@
 import React, { useCallback, useRef } from 'react';
-import styled from '@emotion/styled';
 import { useDispatch } from 'react-redux';
-import { GREY_2, GREY_4 } from 'src/styles/colors';
-import { KeyPressAction } from 'src/constants/search';
-import { HEADER_SEARCH_BAR_HEIGHT, IPHONE_MAX } from 'src/styles/layout';
 import { getVideoList, youtubeActions } from 'src/features/youtube/youtubeSlice';
-import SearchIcon from '../icons/SearchIcon';
+import styled from '@emotion/styled';
+import { GREY_2, GREY_4 } from 'src/styles/colors';
+import { HEADER_SEARCH_BAR_HEIGHT, IPHONE_MAX } from 'src/styles/layout';
+import { KeyPressAction } from 'src/constants/search';
+import SearchIcon from 'src/components/icons/SearchIcon';
 
 interface SearchBarProps {
   placeholder?: string;

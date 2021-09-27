@@ -4,9 +4,9 @@ import { useLoadIFrameApi } from 'src/hook/useLoadIFrameApi';
 import { selectYoutube } from 'src/selectors';
 import { selectParams } from 'src/selectors/youtube';
 import Layout from 'src/components/Layout';
-import DefaultNoResult from '../common/DefaultNoResult';
-import Loader from '../common/Loader';
-import SearchResult from '../home/SearchResult';
+import DefaultNoResult from 'src/components/common/DefaultNoResult';
+import Loader from 'src/components/common/Loader';
+import SearchResult from 'src/components/home/SearchResult';
 
 const HomePage = () => {
   const { loadIFrame } = useLoadIFrameApi();

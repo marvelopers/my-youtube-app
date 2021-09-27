@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import ShuffleIcon from 'src/components/icons/ShuffleIcon';
 import { GREY_1, GREY_5, WANTED_BLUE } from 'src/styles/colors';
 import { IPHONE_MAX } from 'src/styles/layout';
+import ShuffleIcon from 'src/components/icons/ShuffleIcon';
 import { Button } from './Button';
 
 interface ShuffleButtonProps {

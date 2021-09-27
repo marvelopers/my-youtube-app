@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useGetShuffle } from 'src/hook/useGetShuffle';
 import { selectVideoList } from 'src/selectors/youtube';
 import { youtubeActions } from 'src/features/youtube/youtubeSlice';
-import { Video } from 'src/model/youtube';
 import { DEFAULT_LIMIT } from 'src/constants/search';
+import { Video } from 'src/model/youtube';
 
 export const useGetPlaylist = () => {
   const dispatch = useDispatch();

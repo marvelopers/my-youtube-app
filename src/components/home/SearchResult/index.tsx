@@ -2,8 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { IPHONE_MAX } from 'src/styles/layout';
 import { useGetPlaylist } from 'src/hook/useGetPlaylist';
-import Player from '../Player';
-import Playlist from '../Playlist/Playlist';
+import Player from 'src/components/home/Player';
+import Playlist from 'src/components/home/Playlist';
 
 const SearchResult = () => {
   const { watch, handleClickVideo, currPlaylist } = useGetPlaylist();

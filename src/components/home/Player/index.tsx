@@ -2,7 +2,7 @@ import React from 'react';
 import { useGetLikeVideo } from 'src/hook/useGetLikeVideo';
 import { useYoutubeApi } from 'src/hook/useYoutubeApi';
 import { Video } from 'src/model/youtube';
-import HeartIcon from '../../icons/HeartIcon';
+import HeartIcon from 'src/components/icons/HeartIcon';
 import * as Styles from './styles';
 
 interface PlayerProps {

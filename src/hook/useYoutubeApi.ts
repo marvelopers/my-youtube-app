@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectVideoList } from 'src/selectors/youtube';
-import { Video } from 'src/model/youtube';
 import { youtubeActions } from 'src/features/youtube/youtubeSlice';
+import { Video } from 'src/model/youtube';
 
 declare let window: any;
 

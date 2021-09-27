@@ -1,5 +1,5 @@
 import React from 'react';
-import { GREY_1 } from '../../styles/colors';
+import { GREY_1 } from 'src/styles/colors';
 
 interface FilterIconProps {
   color?: string;

@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getVideoList, youtubeActions } from 'src/features/youtube/youtubeSlice';
 import { selectParams } from 'src/selectors/youtube';
+import { getVideoList, youtubeActions } from 'src/features/youtube/youtubeSlice';
 import { ModalHandler } from 'src/utils/ModalHandler';
 import { ModalType } from 'src/constants/modal';
 import { FilterType } from 'src/constants/filter';

@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from '@emotion/styled';
 import { useGetFilter } from 'src/hook/useGetFilter';
-import { FilterList, FilterType } from 'src/constants/filter';
+import styled from '@emotion/styled';
 import { IPHONE_MAX } from 'src/styles/layout';
+import { FilterList, FilterType } from 'src/constants/filter';
 import FilterButton from 'src/components/common/button/FilterButton';
 
 const Filters = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
-import HeartIcon from 'src/components/icons/HeartIcon';
 import { useGetLikeVideo } from 'src/hook/useGetLikeVideo';
 import { Video } from 'src/model/youtube';
+import HeartIcon from 'src/components/icons/HeartIcon';
 import * as Styles from './styles';
 
 interface CompactVideoClipProps {
