@@ -1,52 +1,25 @@
-import styled from '@emotion/styled';
-import React, { useCallback, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-// import styled from '@emotion/styled';
-// import { ModalHandler } from 'src/utils/ModalHandler';
-// import { ModalType } from 'src/constants/modal';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { useLoadIFrameApi } from 'src/hook/useLoadIFrameApi';
+import { selectYoutube } from 'src/selectors';
+import { selectParams } from 'src/selectors/youtube';
 import Layout from 'src/components/Layout';
-import { DEFAULT_LIMIT } from 'src/constants/search';
-import { youtubeActions } from 'src/features/youtube/youtubeSlice';
-import { Video } from 'src/model/youtube';
-import { selectParams, selectVideoList } from 'src/selectors/youtube';
-import Player from '../home/Player';
-import Playlist from '../home/Playlist';
+import DefaultNoResult from '../common/DefaultNoResult';
+import Loader from '../common/Loader';
+import SearchResult from '../home/SearchResult';
 
 const HomePage = () => {
-  const [watch, setWatch] = useState<Video>();
-  const dispatch = useDispatch();
-  const videoList = useSelector(selectVideoList);
+  const { loadIFrame } = useLoadIFrameApi();
+  const { isLoading, videoList } = useSelector(selectYoutube);
   const { q: searchTerm } = useSelector(selectParams);
-
-  const handleClickVideo = useCallback(
-    (video: Video) => {
-      setWatch(video);
-      dispatch(youtubeActions.playedVideo(video?.id.videoId));
-    },
-    [dispatch],
-  );
-
-  useEffect(() => {
-    if (searchTerm && videoList.playList.length <= DEFAULT_LIMIT) {
-      handleClickVideo(videoList.playList[0]);
-    }
-  }, [handleClickVideo, searchTerm, videoList.playList]);
 
   return (
     <Layout>
-      {searchTerm && watch && (
-        <Wrapper>
-          <Player video={watch} />
-          <Playlist playList={videoList.playList} onClickVideo={handleClickVideo} />
-        </Wrapper>
-      )}
+      {isLoading && <Loader />}
+      {!isLoading && searchTerm && videoList.playList.length === 0 && <DefaultNoResult searchTerms={searchTerm} />}
+      {loadIFrame && searchTerm && <SearchResult />}
     </Layout>
   );
 };
 
 export default HomePage;
-
-const Wrapper = styled.section`
-  display: flex;
-  align-items: flex-start;
-`;

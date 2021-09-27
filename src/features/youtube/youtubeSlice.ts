@@ -13,6 +13,8 @@ export interface YoutubeState {
   isLoading: boolean;
   params: Params;
   videoList: {
+    playIndex: number;
+    onShuffle: boolean;
     myLikeVideoIds: string[];
     alreadyPlayedVideoIds: string[];
     playList: Video[];
@@ -33,6 +35,8 @@ const initialState: YoutubeState = {
   isLoading: false,
   params: initParams,
   videoList: {
+    playIndex: 0,
+    onShuffle: false,
     myLikeVideoIds: [],
     alreadyPlayedVideoIds: [],
     playList: [],
@@ -73,6 +77,12 @@ const YoutubeSlice = createSlice({
       },
       prepare: (searchTerm: string) => ({ payload: searchTerm }),
     },
+    setPlayIndex: {
+      reducer: (state, action: PayloadAction<number>) => {
+        state.videoList.playIndex = action.payload;
+      },
+      prepare: (index: number) => ({ payload: index }),
+    },
     playedVideo: {
       reducer: (state, action: PayloadAction<string>) => {
         state.videoList.alreadyPlayedVideoIds = Array.from(
@@ -98,6 +108,12 @@ const YoutubeSlice = createSlice({
         state.videoList.myLikeVideoIds = state.videoList.myLikeVideoIds.filter((prev) => prev !== action.payload);
       },
       prepare: (VideoId: string) => ({ payload: VideoId }),
+    },
+    switchedShuffle: {
+      reducer: (state, action: PayloadAction<boolean>) => {
+        state.videoList.onShuffle = action.payload;
+      },
+      prepare: (on: boolean) => ({ payload: on }),
     },
   },
   extraReducers: {

@@ -1,24 +1,20 @@
-import React, { useCallback } from 'react';
-// import { useDispatch } from 'react-redux';
+import React from 'react';
 import { Video } from 'src/model/youtube';
 import ShuffleButton from 'src/components/common/button/ShuffleButton';
 import CompactVideoClip from 'src/components/home/CompactVideoClip';
 import FilterIcon from 'src/components/icons/FilterIcon';
 import { useGetFilter } from 'src/hook/useGetFilter';
+import { useGetShuffle } from 'src/hook/useGetShuffle';
 import * as Styles from './styles';
 
 interface PlaylistProps {
   playList: Video[];
-  onClickVideo: (video: Video) => void;
+  onClickVideo: (video: Video, index: number) => void;
 }
 
 const Playlist = ({ playList, onClickVideo }: PlaylistProps) => {
   const { handleClickFilterIcon } = useGetFilter();
-
-  const handleClickShuffle = useCallback(() => {
-    console.log('handleClickShuffle');
-    // 셔플 클릭 시 리스트 정렬!!!
-  }, []);
+  const { handleClickShuffle, onShuffle } = useGetShuffle();
 
   return (
     <Styles.Wrapper>
@@ -26,13 +22,14 @@ const Playlist = ({ playList, onClickVideo }: PlaylistProps) => {
         <Styles.FilterIconButton onClick={handleClickFilterIcon}>
           <FilterIcon />
         </Styles.FilterIconButton>
-        <ShuffleButton onClick={handleClickShuffle} />
+        <ShuffleButton selected={onShuffle} onClick={handleClickShuffle} />
       </Styles.ButtonWrapper>
       <Styles.List>
-        {playList.map((item) => (
-          <CompactVideoClip key={item.id.videoId} video={item} onClickVideo={onClickVideo} />
+        {playList.map((item, index) => (
+          <CompactVideoClip key={item.id.videoId} video={item} onClickVideo={() => onClickVideo(item, index)} />
         ))}
       </Styles.List>
+      {!onShuffle && <button type="button">검색결과 더보기</button>}
     </Styles.Wrapper>
   );
 };
