@@ -4,7 +4,7 @@ node_modules
 /build
 
 ## API KEY
-.env
+# .env
 
 # misc
 .DS_Store

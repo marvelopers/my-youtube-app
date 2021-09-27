@@ -7,8 +7,7 @@ import { FilterType } from 'src/constants/filter';
 import { Params, Video } from 'src/model/youtube';
 import { DEFAULT_LIMIT } from '../../constants/search';
 
-// export const API_KEY = 'AIzaSyCd_YTkVELRrudaoBKrVs2ycrkUZKq4CLc';
-export const API_KEY = 'AIzaSyC0YOLCMHDjiIS_id4xY-uKXWvbbNJMRxo';
+export const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY!;
 
 export interface YoutubeState {
   isLoading: boolean;
