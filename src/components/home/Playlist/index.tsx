@@ -29,7 +29,6 @@ const Playlist = ({ playList, onClickVideo }: PlaylistProps) => {
           <CompactVideoClip key={item.id.videoId} video={item} onClickVideo={() => onClickVideo(index)} />
         ))}
       </Styles.List>
-      {!onShuffle && <button type="button">검색결과 더보기</button>}
     </Styles.Wrapper>
   );
 };
