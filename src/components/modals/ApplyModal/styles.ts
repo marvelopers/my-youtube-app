@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { css, keyframes } from '@emotion/react';
 import { ModalDuration } from 'src/constants/modal';
-import { WHITE, WANTED_BLUE } from 'src/styles/colors';
+import { WHITE, BLUE } from 'src/styles/colors';
 import { ZIndex } from 'src/styles/zIndex';
 import { Button } from 'src/components/common/button/Button';
 import { IPHONE_MAX } from 'src/styles/layout';
@@ -25,7 +25,7 @@ export const ButtonWrapper = styled.div`
 `;
 export const ApplyButton = styled(Button)`
   color: ${WHITE};
-  background-color: ${WANTED_BLUE};
+  background-color: ${BLUE};
   width: 100%;
   border-radius: 17.5px;
   padding: 14px;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { GREY_1, GREY_5, WANTED_BLUE } from 'src/styles/colors';
+import { GREY_1, GREY_5, BLUE } from 'src/styles/colors';
 import { IPHONE_MAX } from 'src/styles/layout';
 import ShuffleIcon from 'src/components/icons/ShuffleIcon';
 import { Button } from './Button';
@@ -28,7 +28,7 @@ const ButtonWrap = styled(Button)(
     line-height: 1.2rem;
     font-weight: 500;
     color: ${selected ? GREY_5 : GREY_1};
-    background-color: ${selected ? WANTED_BLUE : GREY_5};
+    background-color: ${selected ? BLUE : GREY_5};
     border-radius: 8px;
 
     span {
