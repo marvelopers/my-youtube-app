@@ -1,4 +1,5 @@
-# youtube-app
+# my-youtube-app
+youtube APIs를 사용한 React Project
 
 ## 시작하기
 
